@@ -1,24 +1,41 @@
-import logo from './logo.svg';
+import Navbar from './components/navbar/Navbar.component';
+import Footer from './components/footer/Footer.component';
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './contexts/Theme.context';
+import { CssBaseline,  GlobalStyles } from '@mui/material';
+import { Fragment } from 'react';
+// import { Router, Route, Routes } from 'react-router-dom'; 
 import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import Home from './pages/home.page';
+import { globalStyle } from './styles/styles';
+import { PortfolioProvider } from './contexts/Portfolio.context';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <Fragment>
+    <CssBaseline/>
+    <ThemeProvider theme={theme}>
+    <GlobalStyles styles={globalStyle} />
+    <PortfolioProvider>
+      <BrowserRouter>
+      <Navbar/>
+      {/* <Router>
+      <Routes>
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/portfolio' element={<Portfolio/>} />
+        <Route exact path='/nosotros' element={<Curriculum />} />
+        <Route exact path='/portfolio/:id' element={<PortafolioView />} />
+      </Routes>
+      </Router> */}
+
+      
+      <Footer />
+      </BrowserRouter>
+      
+    </PortfolioProvider>
+    </ThemeProvider>
+  </Fragment>
   );
 }
 
