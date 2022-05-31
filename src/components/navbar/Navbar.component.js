@@ -77,9 +77,9 @@ const activeColor = 'red'; //NavLink active colour
 
 const navbar = theme => ({
     position: 'fixed',
+    top: 0,
     width: '100%',
     height: '5rem',
-    zIndex: 3,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',

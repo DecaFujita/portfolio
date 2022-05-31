@@ -4,7 +4,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import theme from './contexts/Theme.context';
 import { CssBaseline,  GlobalStyles } from '@mui/material';
 import { Fragment } from 'react';
-// import { Router, Route, Routes } from 'react-router-dom'; 
+import { Route, Routes } from 'react-router-dom'; 
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import Home from './pages/home.page';
@@ -20,16 +20,12 @@ const App = () => {
     <PortfolioProvider>
       <BrowserRouter>
       <Navbar/>
-      {/* <Router>
       <Routes>
         <Route exact path='/' element={<Home />} />
-        <Route exact path='/portfolio' element={<Portfolio/>} />
+        {/* <Route exact path='/portfolio' element={<Portfolio/>} />
         <Route exact path='/nosotros' element={<Curriculum />} />
-        <Route exact path='/portfolio/:id' element={<PortafolioView />} />
+        <Route exact path='/portfolio/:id' element={<PortafolioView />} /> */}
       </Routes>
-      </Router> */}
-
-      
       <Footer />
       </BrowserRouter>
       
