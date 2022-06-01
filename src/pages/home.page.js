@@ -8,7 +8,7 @@ import { Box } from '@mui/material';
 const Home = props => {
     return (
         <Box sx={container}>
-            Hello HOME
+            HELLO HOME!!!
         </Box>
     )
 };
@@ -16,8 +16,8 @@ const Home = props => {
 //STYLES
 
 const container = theme => ({
-    background: 'red',
-    marginTop: '5rem'
+    marginTop: '5rem',
+    background: theme.palette.background.default,
 })
 
 export default Home;

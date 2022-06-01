@@ -1,27 +1,42 @@
-import { createTheme } from "@mui/material";
-const theme = createTheme({
-    palette: {
-        primary: {
-            light: '#46C2DE',
-            main: '#1EB5D7',
-            dark: '#1995B0'
-        },
-        secondary: {
-            light: '#B9B4B0',
-            main: '#817872',
-            dark: '#665A53'
-        },
-        greys: {
-          one: '#F5F5F4',
-          two: '#E2E0DF',
-          three: '#CFCFC9'
-        }
+import { amber, purple, deepOrange, grey } from '@mui/material/colors';
+
+const getDesignTokens = (mode) =>({
+  palette: {
+    mode,
+    primary: {
+      ...purple,
+      ...(mode === 'dark' && {
+        light: grey[300],
+        main: amber[300],
+
+      }),
     },
-    container: {
-        margin: '0 auto',
-        width: '100vw'
+    greys: {
+      one: '#F5F5F4',
+      two: '#E2E0DF',
+      three: '#CFCFC9'
     },
-   breakpoints: {
+    ...(mode === 'dark' && {
+      background: {
+        default: deepOrange[900],
+        paper: deepOrange[900],
+      },
+    }),
+    text: {
+      ...(mode === 'light'
+        ? {
+            primary: grey[900],
+            secondary: grey[800],
+          }
+        : {
+            primary: '#fff',
+            secondary: grey[500],
+          }),
+
+
+    },
+  },
+  breakpoints: {
     values: {
       mobile: 500,
       tablet: 700,
@@ -41,4 +56,7 @@ const theme = createTheme({
   },
 });
 
-export default theme;
+
+
+
+export default getDesignTokens; 

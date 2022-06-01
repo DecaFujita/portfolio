@@ -1,12 +1,11 @@
 import { Box } from '@mui/material';
 // import navLogo  from '../../img/logo_hor.svg';
 import { useState, useEffect, useRef, useContext} from 'react';
-import { NavLink } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
-// import { BrowserRouter } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import Sandwich from './Sandwich.component';
 import { PortfolioContext } from '../../contexts/Portfolio.context';
+import SwitchMode from '../switch/SwitchMode.component';
+import { useTheme } from '@emotion/react';
 
 const Navbar = props => {
     const scrollRef = useRef(false);
@@ -15,6 +14,7 @@ const Navbar = props => {
     const navigate = useNavigate();
     const goTo = (path) => { navigate(path) }
     const  { isOpen, setIsOpen, width } = useContext(PortfolioContext);
+    const theme = useTheme();
 
     // Open-close sandwich menu
     const handleClick = () => {
@@ -54,18 +54,20 @@ const Navbar = props => {
    
     return (
       <Box sx={[navbar, {background: scrollRef.current || width  < 700 ? 'white' : '', transition: 'background .2s linear'}]}>
-      {/* <Box sx={[navbar, {background: scrollRef.current ||  location.pathname === '/portafolio' ? 'white' : '' || location.pathname === '/nosotros' ? 'white' : '' || width  < 700 ? 'white' : '', transition: 'background .2s linear'}]}> */}
         <Box sx={navlogo} onClick={() => goTo('/')} />
-        { width < 900 // tablet
-          ? 
-            <Sandwich handleClick={handleClick} isOpen={isOpen} />
-          :
-          <Box sx={menu}>
-            <NavLink exact='true' to='/' style={({isActive}) => ({color: isActive && activeColor })} href='/'>Home</NavLink>
-            <NavLink exact='true' to='/portfolio' style={({isActive}) => ({color: isActive && activeColor })}  href='/portfolio.html'>Portfolio</NavLink>
-            <NavLink exact='true' to='/cv' style={({isActive}) => ({color: isActive && activeColor })}  href='/cv'>Curriculum</NavLink>
-          </Box>
-        }
+        <Box sx={{ display: 'flex', alignItems: 'center'}}>
+        {/* <SwitchMode handleChange={props.switchMode} theme={} /> */}
+          { width < 900 // tablet
+            ? 
+              <Sandwich handleClick={handleClick} isOpen={isOpen} />
+            :
+            <Box sx={menu}>
+              <NavLink exact='true' to='/' style={({isActive}) => ({color: isActive && activeColor })} href='/'>Home</NavLink>
+              <NavLink exact='true' to='/portfolio' style={({isActive}) => ({color: isActive && activeColor })}  href='/portfolio.html'>Portfolio</NavLink>
+              <NavLink exact='true' to='/cv' style={({isActive}) => ({color: isActive && activeColor })}  href='/cv'>Curriculum</NavLink>
+            </Box>
+          }
+        </Box>
       </Box>
     )
 };
@@ -84,9 +86,6 @@ const navbar = theme => ({
     alignItems: 'center',
     justifyContent: 'space-between',
     borderBottom: `1px solid ${theme.palette.greys.two}`
-    // [theme.breakpoints.down('laptop')]: { 
-    //   height: '8rem'
-    // }, 
 })
 
 const navlogo = theme => ({
@@ -119,7 +118,7 @@ const menu = theme => ({
         transition: 'border .5s linear'
     },
     '& a:link, a:visited': {
-        color: theme.palette.secondary.dark
+        color: theme.palette.primary
     },
     '& a:hover': {
       borderBottom: `1.5px solid ${theme.palette.primary.main}`,
