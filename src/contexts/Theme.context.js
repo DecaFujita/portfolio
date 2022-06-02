@@ -6,35 +6,36 @@ const getDesignTokens = (mode) =>({
     primary: {
       ...purple,
       ...(mode === 'dark' && {
-        light: grey[300],
+        light: amber[200],
         main: amber[300],
-
+        dark: amber[400],
       }),
+    },
+    secondary: {
+      ...deepOrange,
     },
     greys: {
       one: '#F5F5F4',
       two: '#E2E0DF',
       three: '#CFCFC9'
     },
-    ...(mode === 'dark' && {
-      background: {
-        default: deepOrange[900],
-        paper: deepOrange[900],
-      },
-    }),
-    text: {
-      ...(mode === 'light'
-        ? {
-            primary: grey[900],
-            secondary: grey[800],
-          }
-        : {
-            primary: '#fff',
-            secondary: grey[500],
-          }),
-
-
+    background: {
+      default: '#fafafa',
+      paper: '#ffffff',
+      ...(mode === 'dark' && {
+        default: '#303030',
+        paper: '#424242',
+      }),
     },
+    
+    // text: {
+    //   primary: purple[900],
+    //   secondary: grey[800],
+    //   ...(mode === 'dark' && {
+    //     primary: '#fff',
+    //     secondary: grey[500],
+    //   })
+    // },
   },
   breakpoints: {
     values: {
@@ -45,7 +46,7 @@ const getDesignTokens = (mode) =>({
     },
   },
   typography: {
-    h1: { fontSize: '9.6rem' }, //96
+    h1: { fontSize: '9.6rem', fontWeight:'700' }, //96
     h2: { fontSize: '6rem' }, //60
     h3: { fontSize: '4.8rem', fontWeight: '300' }, //48
     h4: { fontSize: '3.2rem' }, //32
@@ -55,8 +56,5 @@ const getDesignTokens = (mode) =>({
     body2: { fontSize: '1.4rem' }, //16
   },
 });
-
-
-
 
 export default getDesignTokens; 

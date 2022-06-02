@@ -1,11 +1,11 @@
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 // import navLogo  from '../../img/logo_hor.svg';
 import { useState, useEffect, useRef, useContext} from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import Sandwich from './Sandwich.component';
 import { PortfolioContext } from '../../contexts/Portfolio.context';
 import SwitchMode from '../switch/SwitchMode.component';
-import { useTheme } from '@emotion/react';
+import { useTheme } from '@mui/material/styles'
 
 const Navbar = props => {
     const scrollRef = useRef(false);
@@ -14,13 +14,10 @@ const Navbar = props => {
     const navigate = useNavigate();
     const goTo = (path) => { navigate(path) }
     const  { isOpen, setIsOpen, width } = useContext(PortfolioContext);
-    const theme = useTheme();
 
     // Open-close sandwich menu
-    const handleClick = () => {
-      setIsOpen(!isOpen)
-    }
-
+    const handleClick = () => { setIsOpen(!isOpen) }
+    const activeColor = useTheme().palette.primary.main;
     // Map scrolling
     useEffect(() => {
         try {
@@ -53,10 +50,12 @@ const Navbar = props => {
     }, [scrollTop])
    
     return (
-      <Box sx={[navbar, {background: scrollRef.current || width  < 700 ? 'white' : '', transition: 'background .2s linear'}]}>
+    // Transparent navbar that turns white on scroll
+    // <Box sx={[navbar, {background: scrollRef.current || width  < 700 ? 'white' : '', transition: 'background .2s linear'}]}> 
+      <Box sx={navbar}>
         <Box sx={navlogo} onClick={() => goTo('/')} />
         <Box sx={{ display: 'flex', alignItems: 'center'}}>
-        {/* <SwitchMode handleChange={props.switchMode} theme={} /> */}
+          <SwitchMode handleChange={props.switchMode}/>
           { width < 900 // tablet
             ? 
               <Sandwich handleClick={handleClick} isOpen={isOpen} />
@@ -74,18 +73,16 @@ const Navbar = props => {
 
 
 //STYLES
-
-const activeColor = 'red'; //NavLink active colour
-
 const navbar = theme => ({
     position: 'fixed',
     top: 0,
     width: '100%',
     height: '5rem',
+    background: theme.palette.background.default,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderBottom: `1px solid ${theme.palette.greys.two}`
+    borderBottom: `1px solid ${theme.palette.divider}`
 })
 
 const navlogo = theme => ({
@@ -118,7 +115,7 @@ const menu = theme => ({
         transition: 'border .5s linear'
     },
     '& a:link, a:visited': {
-        color: theme.palette.primary
+        color: theme.palette.text.primary
     },
     '& a:hover': {
       borderBottom: `1.5px solid ${theme.palette.primary.main}`,

@@ -1,23 +1,16 @@
-// import { Fragment } from "react";
-import { Box } from '@mui/material';
-// import SectionCarousel from '../sections/Carousel.section';
-// import SectionGallery from '../sections/Gallery.section';
-// import { containerStyle } from '../styles/styles'
-
+import { Box, Typography } from '@mui/material';
 
 const Home = props => {
     return (
         <Box sx={container}>
-            HELLO HOME!!!
+            <Typography variant="h1" sx={{color: 'theme.palette.text.primary'}} >HELLO HOME!!!</Typography>
         </Box>
     )
 };
+export default Home;
 
 //STYLES
-
 const container = theme => ({
     marginTop: '5rem',
-    background: theme.palette.background.default,
 })
 
-export default Home;
