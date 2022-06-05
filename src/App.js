@@ -13,25 +13,19 @@ import getDesignTokens from './contexts/Theme.context'
 
 import './App.css';
 
-const container = theme => ({
-  height: '100vh',
-  width: '100vw',
-  background: theme.palette.background.default
-})
-
 const App = () => {
   const [ isDarkMode, setIsDarkMode ] = useState(true)
   const switchMode = props => (setIsDarkMode(!isDarkMode))
-  const darkModeTheme = createTheme(getDesignTokens(isDarkMode ? 'dark' : 'light'));
+  const theme = createTheme(getDesignTokens(isDarkMode ? 'dark' : 'light'));
 
   return (
   <Fragment>
     <CssBaseline/>
-      <ThemeProvider theme={darkModeTheme}>
+      <ThemeProvider theme={theme}>
         <GlobalStyles styles={globalStyle} />
         <PortfolioProvider>
           <BrowserRouter>
-          <Navbar switchMode={switchMode}/>
+          <Navbar switchMode={switchMode} isDarkMode={isDarkMode}/>
           <Box sx={container}>
           <Routes>
             
@@ -42,7 +36,7 @@ const App = () => {
             
           </Routes>
           </Box>
-          <Footer />
+          <Footer isDarkMode={isDarkMode}/>
           </BrowserRouter>
         </PortfolioProvider>
       </ThemeProvider>
@@ -51,3 +45,12 @@ const App = () => {
 }
 
 export default App;
+
+//STYLES
+
+
+const container = theme => ({
+  height: '100vh',
+  width: '100vw',
+  background: theme.palette.background.default
+})

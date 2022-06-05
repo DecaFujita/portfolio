@@ -1,5 +1,6 @@
 import { Box, Button } from '@mui/material';
-// import navLogo  from '../../img/logo_hor.svg';
+// import navLogoNeg  from '../../img/navLogo-neg.svg';
+import { NavLogo, NavLogoNeg } from '../navbar/NavLogo';
 import { useState, useEffect, useRef, useContext} from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import Sandwich from './Sandwich.component';
@@ -53,7 +54,14 @@ const Navbar = props => {
     // Transparent navbar that turns white on scroll
     // <Box sx={[navbar, {background: scrollRef.current || width  < 700 ? 'white' : '', transition: 'background .2s linear'}]}> 
       <Box sx={navbar}>
-        <Box sx={navlogo} onClick={() => goTo('/')} />
+        <Box sx={navlogo}>
+          {props.isDarkMode ? 
+            <NavLogoNeg onClick={() => goTo('/')} />
+          :
+            <NavLogo onClick={() => goTo('/')} />
+          }
+        </Box>
+        
         <Box sx={{ display: 'flex', alignItems: 'center'}}>
           <SwitchMode handleChange={props.switchMode}/>
           { width < 900 // tablet
@@ -76,6 +84,8 @@ const Navbar = props => {
 const navbar = theme => ({
     position: 'fixed',
     top: 0,
+    paddingLeft: '3rem',
+    paddingRight: '3rem',
     width: '100%',
     height: '5rem',
     background: theme.palette.background.default,
@@ -86,12 +96,9 @@ const navbar = theme => ({
 })
 
 const navlogo = theme => ({
-    width: '15rem',
-    marginLeft: '5rem',
-    height: '10rem',
-    // background: `url(${navLogo})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
+    height: '80%',
+    display: 'flex',
+    alignItems: 'center'
     // [theme.breakpoints.down('laptop')]: { // change it to mobile later! 
     //   width: '20rem',
     //   marginLeft: '2rem', 
@@ -101,7 +108,6 @@ const navlogo = theme => ({
 const menu = theme => ({
     width: '300px',
     display: 'flex',
-    marginRight: '50px',
     justifyContent: 'space-between',
     fontSize: '1rem',
     fontFamily: 'Raleway',
@@ -115,7 +121,7 @@ const menu = theme => ({
         transition: 'border .5s linear'
     },
     '& a:link, a:visited': {
-        color: theme.palette.text.primary
+        color: theme.palette.text.secondary
     },
     '& a:hover': {
       borderBottom: `1.5px solid ${theme.palette.primary.main}`,
