@@ -1,5 +1,4 @@
-import { Box, Button, Typography, Link } from '@mui/material';
-import { Fragment } from 'react';
+import { Box, Typography, Link } from '@mui/material';
 import { ChevronDown } from '../components/icons/Icons';
 import aboutPic from '../img/decafujita.jpg';
 
@@ -73,7 +72,7 @@ const textColor = theme => ({color: theme.palette.text.primary })
 const text1 = theme => ({ color: 'white', lineHeight: '6.5rem' })
 const text2 = theme => ({ color: theme.palette.secondary.main, lineHeight: '9.5rem' })
 const text3 = theme => ({ color: theme.palette.primary.main })
-const link = theme => ({ marginRight: '2rem'})
+const link = theme => ({ marginRight: '4rem', fontWeight: '700', letterSpacing: '.05rem'})
 // const text4 = theme => ({ display: 'inline-block'})
 
 // STYLES for About me (section2)
@@ -111,11 +110,11 @@ const contentBubble = theme => ({
     justifyContent: 'center'
 })
 
-const contentButtons = theme => ({})
+const contentButtons = theme => ({marginTop: '3rem'})
 
 const content = theme => ({
     width: '100%',
-    height: '45rem',
+    height: '40rem',
     margin: '0 auto',
     display: 'flex'
 })
@@ -176,7 +175,7 @@ const bSide = theme => ({
  
 const intro = theme => ({
     width: '100%',
-    height: '100%',
+    height: '100vh',
     display: 'flex'
 })
 

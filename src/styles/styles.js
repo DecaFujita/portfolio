@@ -15,7 +15,6 @@ const globalStyle = theme => ({
       width: '100vw',
       overflowX: 'hidden'
     },
-
 });
 
 export { globalStyle };

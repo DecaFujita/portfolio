@@ -1,8 +1,8 @@
 import { useState, createContext, useEffect } from 'react';
 
-const PortfolioContext = createContext();
+const PageContext = createContext();
 
-const PortfolioProvider = props => {
+const PageProvider = props => {
     const [ isOpen, setIsOpen ] = useState(false);
     const [width, setWidth] = useState(window.innerWidth);
 
@@ -20,10 +20,10 @@ const PortfolioProvider = props => {
     }, []);
 
     return (
-        <PortfolioContext.Provider value={{isOpen, setIsOpen, width}}>
+        <PageContext.Provider value={{isOpen, setIsOpen, width}}>
             {props.children}
-        </PortfolioContext.Provider>
+        </PageContext.Provider>
     )
 }
 
-export { PortfolioContext, PortfolioProvider }
+export { PageContext, PageProvider }

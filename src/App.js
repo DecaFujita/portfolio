@@ -5,10 +5,12 @@ import { CssBaseline,  GlobalStyles, createTheme, Box } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 
 import { globalStyle } from './styles/styles';
-import { PortfolioProvider } from './contexts/Portfolio.context';
+import { PageProvider } from './contexts/Page.context';
 import Navbar from './components/navbar/Navbar.component';
 import Footer from './components/footer/Footer.component';
 import Home from './pages/home.page';
+import Portfolio from './pages/portfolio.page';
+import CV from './pages/cv.page';
 import getDesignTokens from './contexts/Theme.context'
 
 import './App.css';
@@ -23,22 +25,20 @@ const App = () => {
     <CssBaseline/>
       <ThemeProvider theme={theme}>
         <GlobalStyles styles={globalStyle} />
-        <PortfolioProvider>
+        <PageProvider>
           <BrowserRouter>
           <Navbar switchMode={switchMode} isDarkMode={isDarkMode}/>
           <Box sx={container}>
           <Routes>
-            
             <Route exact path='/' element={<Home />} />
-            {/* <Route exact path='/portfolio' element={<Portfolio/>} />
-            <Route exact path='/nosotros' element={<Curriculum />} />
-            <Route exact path='/portfolio/:id' element={<PortafolioView />} /> */}
-            
+            <Route exact path='/portfolio' element={<Portfolio/>} />
+            <Route exact path='/cv' element={<CV />} />
+            {/* <Route exact path='/portfolio/:id' element={<PortafolioView />} /> */}
           </Routes>
           </Box>
-          <Footer isDarkMode={isDarkMode}/>
+          <Footer />
           </BrowserRouter>
-        </PortfolioProvider>
+        </PageProvider>
       </ThemeProvider>
   </Fragment>
   );
@@ -47,10 +47,7 @@ const App = () => {
 export default App;
 
 //STYLES
-
-
 const container = theme => ({
-  height: '100vh',
   width: '100vw',
   background: theme.palette.background.default
 })

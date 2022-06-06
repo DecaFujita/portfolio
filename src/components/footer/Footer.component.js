@@ -48,7 +48,7 @@ const footer = theme => ({
 }) 
 
 const sociallinks = theme => ({
-    width: '15rem',
+    width: '20rem',
     height: '3rem',
     display: 'flex',
     justifyContent: 'space-between',

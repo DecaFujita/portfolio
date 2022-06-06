@@ -1,10 +1,9 @@
-import { Box, Button } from '@mui/material';
-// import navLogoNeg  from '../../img/navLogo-neg.svg';
+import { Box } from '@mui/material';
 import { NavLogo, NavLogoNeg } from '../navbar/NavLogo';
 import { useState, useEffect, useRef, useContext} from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import Sandwich from './Sandwich.component';
-import { PortfolioContext } from '../../contexts/Portfolio.context';
+import { PageContext } from '../../contexts/Page.context';
 import SwitchMode from '../switch/SwitchMode.component';
 import { useTheme } from '@mui/material/styles'
 
@@ -14,7 +13,7 @@ const Navbar = props => {
     const location = useLocation();
     const navigate = useNavigate();
     const goTo = (path) => { navigate(path) }
-    const  { isOpen, setIsOpen, width } = useContext(PortfolioContext);
+    const  { isOpen, setIsOpen, width } = useContext(PageContext);
 
     // Open-close sandwich menu
     const handleClick = () => { setIsOpen(!isOpen) }
@@ -114,6 +113,7 @@ const menu = theme => ({
     fontWeight: '700',
     letterSpacing: '.1rem',
     textTransform: 'uppercase',
+    color: theme.palette.text.primary,
     '& a': {
         textDecoration: 'none',
         cursos: 'pointer',
