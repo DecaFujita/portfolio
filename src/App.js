@@ -10,6 +10,7 @@ import Navbar from './components/navbar/Navbar.component';
 import Footer from './components/footer/Footer.component';
 import Home from './pages/home.page';
 import Portfolio from './pages/portfolio.page';
+import PortfolioView from './pages/portfolioView.page';
 import CV from './pages/cv.page';
 import getDesignTokens from './contexts/Theme.context'
 
@@ -33,7 +34,8 @@ const App = () => {
             <Route exact path='/' element={<Home />} />
             <Route exact path='/portfolio' element={<Portfolio/>} />
             <Route exact path='/cv' element={<CV />} />
-            {/* <Route exact path='/portfolio/:id' element={<PortafolioView />} /> */}
+            <Route exact path='/portfolio/monitor' element={<PortfolioView project={'monitor'}/>} />
+            {/* <Route exact path='/portfolio/:id' element={<PortfolioView />} /> */}
           </Routes>
           </Box>
           <Footer />
@@ -49,5 +51,6 @@ export default App;
 //STYLES
 const container = theme => ({
   width: '100vw',
+  height: '100%',
   background: theme.palette.background.default
 })
