@@ -1,4 +1,9 @@
 import { Box } from '@mui/material';
+import MonitorBackground from '../img/MonitorBackground.png';
+import MonitorDesk from '../img/MonitorDesk.png';
+import MonitorMobile from '../img/MonitorMobile.png';
+import MonitorStyle from '../img/MonitorStyle.png';
+
 
 const MonitorPage = props => {
     return (
@@ -13,19 +18,19 @@ export default MonitorPage;
 
 const container = theme => ({
     width: '100%',
-    height: '50rem',
+    minHeight: '100vh',
     display: 'flex',
     justifyContent: 'center'
 });
 
 const img1 = theme => ({
     width: '50rem',
-    height: '100%',
+    height: '50rem',
     backgroundImage: 'blue',
 })
 const img2 = theme => ({
     width: '50rem',
-    height: '100%',
+    height: '50rem',
     background: 'red'
 })
 
