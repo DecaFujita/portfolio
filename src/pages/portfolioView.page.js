@@ -1,37 +1,40 @@
+
+import { useParams } from 'react-router-dom';
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import Monitor from '../pages/portfolio.monitor.page';
+import { portfolioContentList } from './portifolio.content';
+import MonitorDesk from '../img/MonitorDesk.png';
 
 const PortfolioView = props => {
+    const { id } = useParams();
+    const project = portfolioContentList.find(project => project.id === `project${id}`);
+    const tags = project.tags;
 
     return (
         <Box sx={container}>
             <Box sx={intro}>
                 <Box sx={introSideA}>
                     <Box mb={2}>
-                        <Typography variant='body1'>Cencosud</Typography>
-                        <Typography variant='h4'>Klaüben</Typography>
+                        <Typography variant='body1'>{project.client}</Typography>
+                        <Typography variant='h4'>{project.project}</Typography>
+                        <Typography variant='body1' mt={6}>
+                            {project.description}
+                        </Typography>
                     </Box>
                     <Box>
-                        <Typography variant='body1'>
-                            Klaüben is Cencosud's own brand for premium appliance.
-                            The project consisted of branding, packaging and point of 
-                            purchased developments, as well as material for website
-                            and social media.
-                        </Typography>
-                        <br/>
-                        <Typography variant='body1' sx={tags}>
-                            branding <br/>
-                            packaging <br/>
-                            pop <br/>
-                            web <br/>
-                            social media <br/>
-                        </Typography>
+                        <Box>
+                            {tags.map(tag => <Typography  key={`key${project.project}${tag}`} variant='body1' sx={tagsStyle}>{tag}</Typography>)}
+                        </Box>
                     </Box>
                 </Box>
-                <Box sx={introSideB} />
+                <Box sx={[introSideB, {backgroundImage: `url(${project.mainPic})`,}]} />
             </Box>
-            {props.monitor && <Monitor />}
+            {project.id === 'project1' && <Monitor />}
+            {project.id === 'project2' && <Monitor />}
+            {project.id === 'project3' && <Monitor />}
+            {project.id === 'project4' && <Monitor />}
+            {project.id === 'project5' && <Monitor />}
         </Box>
     )
 }
@@ -40,7 +43,7 @@ export default PortfolioView;
 
 // STYLES
 
-const tags = theme => ({
+const tagsStyle = theme => ({
     color: theme.palette.primary.main,
     fontWeight: '600'
 })
@@ -57,7 +60,7 @@ const introSideA = theme => ({
 const introSideB = theme => ({
     width: '65rem',
     justifyContent: 'flex-start',
-    background: 'blue'
+    backgroundSize: 'cover'
 })
 
 const intro = theme => ({
