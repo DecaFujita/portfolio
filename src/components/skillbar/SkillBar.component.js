@@ -12,7 +12,7 @@ export default SkillBar;
 
 const bar = theme => ({
     width: '100%',
-    height: '.6rem',
+    height: '.8rem',
     borderRadius: '5rem',
     border: `1px solid ${theme.palette.secondary.main}`,
     display: 'flex',

@@ -10,14 +10,13 @@ const SwitchMode = props => {
 
   // const theme = useTheme();
   return (
-    <Box sx={{display: 'flex', alignItems: 'center', marginRight: '4rem'}}>
+    <Box sx={{display: 'flex', alignItems: 'center'}} mr={1}>
       <ModeSwitch onChange={props.handleChange} {...label} size='small'/>
     </Box>
   );
 }
 
 export default SwitchMode;
-
 
 const ModeSwitch = styled(Switch)(({ theme }) => ({
   '& .MuiSwitch-switchBase.Mui-checked': {

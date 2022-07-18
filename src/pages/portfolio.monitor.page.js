@@ -12,7 +12,7 @@ const MonitorPage = props => {
                 <Box sx={img1Content2} />
             </Box>
             <Box sx={img2}>
-                <Box sx={img2Content}/>
+                <Box sx={img2Content}/> 
             </Box>
         </Box>
     )
@@ -44,11 +44,12 @@ const img1 = theme => ({
     width: '100%',
     height: '50rem',
     backgroundImage: `url(${MonitorBackground})`,
-    backgroubdPosition: 'center',
+    backgroundSize: '120% auto',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundRepeat: 'no-repeat'
+    backgroundRepeat: 'no-repeat',
+    zIndex: 2
 })
 const img2 = theme => ({
     width: '100%',
@@ -57,11 +58,11 @@ const img2 = theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: '2rem'
+    paddingBottom: '3rem',
 })
 
 const container = theme => ({
     width: '100%',
-    marginTop: '3rem'
+    marginTop: '3rem',
 });
 

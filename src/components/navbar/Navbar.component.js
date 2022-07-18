@@ -1,16 +1,16 @@
 import { Box } from '@mui/material';
 import { NavLogo, NavLogoNeg } from '../navbar/NavLogo';
 import { useState, useEffect, useRef, useContext} from 'react';
-import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Sandwich from './Sandwich.component';
 import { PageContext } from '../../contexts/Page.context';
 import SwitchMode from '../switch/SwitchMode.component';
-import { useTheme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles';
+import { ScrollToTop } from '../../utils';
 
 const Navbar = props => {
     const scrollRef = useRef(false);
     const [ scrollTop, setScrollTop ] = useState(0);
-    const location = useLocation();
     const navigate = useNavigate();
     const goTo = (path) => { navigate(path) }
     const  { isOpen, setIsOpen, width } = useContext(PageContext);
@@ -18,19 +18,7 @@ const Navbar = props => {
     // Open-close sandwich menu
     const handleClick = () => { setIsOpen(!isOpen) }
     const activeColor = useTheme().palette.primary.main;
-    // Map scrolling
-    useEffect(() => {
-        try {
-            window.scroll({
-              top: 0,
-              left: 0,
-              behavior: 'smooth',
-            });
-          } catch (error) {
-            // fallback for older browsers
-            window.scrollTo(0, 0);
-          }
-      }, [])
+    ScrollToTop();
       
     // Show navbar background on scroll down
     useEffect(() => {
@@ -50,29 +38,23 @@ const Navbar = props => {
     }, [scrollTop])
    
     return (
-    // Transparent navbar that turns white on scroll
-    // <Box sx={[navbar, {background: scrollRef.current || width  < 700 ? 'white' : '', transition: 'background .2s linear'}]}> 
       <Box sx={navbar}>
-        <Box sx={navlogo}>
-          {props.isDarkMode ? 
-            <NavLogoNeg onClick={() => goTo('/')} />
-          :
-            <NavLogo onClick={() => goTo('/')} />
-          }
+        <Box sx={navlogo}  onClick={() => goTo('/')}>
+          {props.isDarkMode ? <NavLogoNeg /> : <NavLogo />}
         </Box>
         
         <Box sx={{ display: 'flex', alignItems: 'center'}}>
           <SwitchMode handleChange={props.switchMode}/>
-          { width < 900 // tablet
-            ? 
-              <Sandwich handleClick={handleClick} isOpen={isOpen} />
-            :
-            <Box sx={menu}>
-              <NavLink exact='true' to='/' style={({isActive}) => ({color: isActive && activeColor })} href='/'>Home</NavLink>
-              <NavLink exact='true' to='/portfolio' style={({isActive}) => ({color: isActive && activeColor })}  href='/portfolio.html'>Portfolio</NavLink>
-              <NavLink exact='true' to='/cv' style={({isActive}) => ({color: isActive && activeColor })}  href='/cv'>Curriculum</NavLink>
-            </Box>
-          }
+            { width < 700 // tablet portrait
+              ? 
+                <Sandwich handleClick={handleClick} isOpen={isOpen} />
+              :
+              <Box sx={menu}>
+                <NavLink exact='true' to='/' style={({isActive}) => ({color: isActive && activeColor })} href='/'>Home</NavLink>
+                <NavLink exact='true' to='/portfolio' style={({isActive}) => ({color: isActive && activeColor })}  href='/portfolio.html'>Portfolio</NavLink>
+                <NavLink exact='true' to='/cv' style={({isActive}) => ({color: isActive && activeColor })}  href='/cv'>Curriculum</NavLink>
+              </Box>
+            }
         </Box>
       </Box>
     )
@@ -86,12 +68,17 @@ const navbar = theme => ({
     paddingLeft: '3rem',
     paddingRight: '3rem',
     width: '100%',
+    minWidth: '40rem',
     height: '5rem',
+    [theme.breakpoints.down('mobile')]: {
+      height: '6rem'
+    },
     background: theme.palette.background.default,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderBottom: `1px solid ${theme.palette.divider}`
+    borderBottom: `1px solid ${theme.palette.divider}`,
+    zIndex: 1
 })
 
 const navlogo = theme => ({
@@ -105,7 +92,6 @@ const navlogo = theme => ({
 })
 
 const menu = theme => ({
-    width: '300px',
     display: 'flex',
     justifyContent: 'space-between',
     fontSize: '1rem',
@@ -113,15 +99,18 @@ const menu = theme => ({
     fontWeight: '700',
     letterSpacing: '.1rem',
     textTransform: 'uppercase',
-    color: theme.palette.text.primary,
+    color: theme.palette.text.secondary,
+    transform: 'translateY(.2rem)',
     '& a': {
         textDecoration: 'none',
         cursos: 'pointer',
-        borderBottom: '1px solid transparent',
-        transition: 'border .5s linear'
+        transition: 'border .5s linear',
+        borderBottom: '1.5px solid rgba(255,255,255,0)',
+        marginLeft: '4rem'
     },
     '& a:link, a:visited': {
-        color: theme.palette.text.secondary
+        color: theme.palette.text.secondary,
+    // borderBottom: '1.5px solid rgba(255,255,255,0)',
     },
     '& a:hover': {
       borderBottom: `1.5px solid ${theme.palette.primary.main}`,

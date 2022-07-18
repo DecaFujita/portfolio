@@ -1,67 +1,64 @@
 import { Box } from '@mui/material';
-import MonitorBackground from '../img/MonitorBackground.png';
-import MonitorMobile from '../img/MonitorMobile.png';
-import MonitorStyle from '../img/MonitorStyle.png';
+
+import Klauben1 from '../img/Klauben1.png';
+import Klauben2 from '../img/Klauben2.png';
+import Klauben3 from '../img/Klauben3.jpg';
+import Klauben4 from '../img/Klauben4.jpg';
 
 
-const MonitorPage = props => {
+const KlaubenPage = props => {
     return (
         <Box sx={container}>
-            <Box sx={img1}>
-                <Box sx={img1Content1} />
-                <Box sx={img1Content2} />
-            </Box>
-            <Box sx={img2}>
-                <Box sx={img2Content}/>
-            </Box>
+            <Box sx={img1} />
+            <Box sx={img2} />
+            <Box sx={img3} />
+            <Box sx={img4} />
         </Box>
     )
 }
 
-export default MonitorPage;
+export default KlaubenPage;
 
-const img1Content1 = thene => ({
-    width: '50rem',
-    height: '40rem',
-    backgroundImage:  `url(${MonitorMobile})`,
-    backgroundSize: '42rem auto',
-    backgroundRepeat: 'no-repeat'
-})
-const img1Content2 = thene => ({
-    width: '50rem',
-    height: '50rem',
-})
-
-const img2Content = theme => ({
+const img1 = theme => ({
     width: '100rem',
-    height: '88rem',
-    backgroundImage:  `url(${MonitorStyle})`,
-    backgroundSize: 'cover',
+    height: '54rem',
+    margin: '0 auto',
+    backgroundImage: `url(${Klauben3})`,
+    backgroundSize: 'auto 100%',
     backgroundPosition: 'center'
 })
- 
-const img1 = theme => ({
-    width: '100%',
-    height: '50rem',
-    backgroundImage: `url(${MonitorBackground})`,
-    backgroubdPosition: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundRepeat: 'no-repeat'
-})
+
 const img2 = theme => ({
-    width: '100%',
-    height: '85rem',
-    background: '#4da9a3',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingBottom: '2rem'
+    width: '100rem',
+    height: '54rem',
+    margin: '0 auto',
+    marginTop: '1.5rem',
+    backgroundImage: `url(${Klauben4})`,
+    backgroundSize: 'auto 100%',
+    backgroundPosition: 'center'
+})
+
+const img3 = theme => ({
+    width: '100rem',
+    height: '65.8rem',
+    margin: '0 auto',
+    marginTop: '1.5rem',
+    backgroundImage: `url(${Klauben1})`,
+    backgroundSize: '100% auto'
+})
+
+const img4 = theme => ({
+    width: '100rem',
+    height: '91.3rem',
+    margin: '0 auto',
+    marginTop: '1.5rem',
+    backgroundImage: `url(${Klauben2})`,
+    backgroundSize: '100% auto'
 })
 
 const container = theme => ({
     width: '100%',
-    marginTop: '3rem'
+    marginTop: '3rem',
+    paddingBottom: '5rem'
 });
 

@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { NavLink } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { Transition } from 'react-transition-group';
 
 const Sandwich = props => {
@@ -21,17 +21,15 @@ const Sandwich = props => {
                 // unmountOnExit
             >
                 {state => (
-                    <Box sx={menuBox}>
-                        <Box red={ref} id='menu' sx={[menu, {...menuItemAnim[state],}]}>
-                            <NavLink exact='true' to='/' style={({isActive}) => ({color: isActive ? '#1EB5D7' : ''})} href='/home'>Home</NavLink>
-                            <NavLink exact='true' to='/portfolio'  style={({isActive}) => ({color: isActive ? '#1EB5D7' : ''})} href='/portafolio.html'>Portafolio</NavLink>
-                            <NavLink exact='true' to='/cv'  style={({isActive}) => ({color: isActive ? '#1EB5D7' : ''})} href='/cv'>Nosotros</NavLink>
+                    <Box sx={[menuBox, {...menuAnim[state]}]}>
+                        <Box red={ref} id='menu' sx={[menu]}>
+                            <NavLink exact='true' to='/' style={({isActive}) => ({color: isActive && '#1EB5D7'})} href='/home'>Home</NavLink>
+                            <NavLink exact='true' to='/portfolio'  style={({isActive}) => ({color: isActive && '#1EB5D7'})} href='/portafolio.html'>Portafolio</NavLink>
+                            <NavLink exact='true' to='/cv'  style={({isActive}) => ({color: isActive && '#1EB5D7'})} href='/cv'>Nosotros</NavLink>
                         </Box>
-                    </Box>
-                       
+                    </Box>  
                 )}
             </Transition>
-            
         </Box>
     )
 }
@@ -41,16 +39,22 @@ const Sandwich = props => {
 const menuItemAnim = {
     entering: {opacity:0, transform: 'translateY(-40px)'},
     entered: {opacity:1, transform: 'translateY(0px)', transition: 'all .3s linear'},
-    exiting:  {opacity:1, transform: 'translateY(0px)', transition: 'all .3s linear'  },
-    exited:  {opacity:0, transform: 'translateY(-40px)', transition: 'all .3s linear' },
+    exiting: {opacity:1, transform: 'translateY(0px)', transition: 'all .3s linear'  },
+    exited: {opacity:0, transform: 'translateY(-40px)', transition: 'all .3s linear' },
+  }
+
+  const menuAnim = {
+    entering: { transform: 'translateX(100vw)' },
+    entered: { transform: 'translateX(0rem)', transition: 'all .5s linear' },
+    exiting: { transform: 'translateX(0rem)' },
+    exited: { transform: 'translateX(100vw)', transition: 'all .5s linear' },
   }
 
 const sandwich = theme => ({
     display: 'flex',
-    width:'5rem',
     height: '5.3rem',
-    marginRight: '2rem',
-    padding: '1.6rem',
+    padding: '1.6rem 0',
+    marginLeft: '1rem',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -61,15 +65,21 @@ const sandwichTab = theme => ({
     height: '.25rem',
     width: '2.5rem',
     borderRadius: '1rem',
-    background: theme.palette.secondary.main ,
+    background: theme.palette.text.secondary,
     transition: 'all .2s linear',
 })
 
 const menuBox = theme => ({
     position: 'absolute',
-    left: '0',
-    width: '100%',
-    overflow: 'hidden'
+    right: '0',
+    top: '5rem',
+    [theme.breakpoints.down('mobile')]: {
+        top: '7rem'
+    },
+    width: '100vw',
+    height: '100vh',
+    overflow: 'hidden',
+    background: theme.palette.primary.main,
 })
 
 const menu = theme => ({

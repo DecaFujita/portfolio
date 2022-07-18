@@ -48,20 +48,33 @@ const getDesignTokens = (mode) =>({
     values: {
       mobile: 500,
       tablet: 700,
-      laptop: 900,
+      laptop: 1000,
       desktop: 1200,
     },
   },
   typography: {
-    fontFamily: 'Raleway',
+    // fontFamily: 'Raleway',
+    fontFamily: [
+      'Raleway',
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
     h1: { fontSize: '9.6rem', fontWeight:'700' }, //96
-    h2: { fontSize: '6rem' }, //60
+    h2: { fontSize: '6rem', fontWeight:'400' }, //60
     h3: { fontSize: '4.8rem', fontWeight: '300' }, //48
     h4: { fontSize: '3.2rem',  fontWeight: '600' }, //32
-    h5: { fontSize: '2.4rem' }, //24
-    h6: { fontSize: '1.9rem' }, //19
-    body1: { fontSize: '1.6rem' }, //16
-    body2: { fontSize: '1.4rem' }, //14
+    h5: { fontSize: '2.4rem', fontWeight:'400' }, //24
+    h6: { fontSize: '1.9rem', fontWeight:'400' }, //19
+    body1: { fontSize: '1.6rem', fontWeight:'400' }, //16
+    body2: { fontSize: '1.4rem', fontWeight:'400' }, //14
   },
 });
 
