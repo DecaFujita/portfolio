@@ -44,10 +44,10 @@ const Navbar = props => {
         </Box>
         
         <Box sx={{ display: 'flex', alignItems: 'center'}}>
-          <SwitchMode handleChange={props.switchMode}/>
+          <SwitchMode handleChange={props.switchMode} />
             { width < 700 // tablet portrait
               ? 
-                <Sandwich handleClick={handleClick} isOpen={isOpen} />
+                <Sandwich handleClick={handleClick} isOpen={isOpen}  />
               :
               <Box sx={menu}>
                 <NavLink exact='true' to='/' style={({isActive}) => ({color: isActive && activeColor })} href='/'>Home</NavLink>
@@ -62,6 +62,7 @@ const Navbar = props => {
 
 
 //STYLES
+
 const navbar = theme => ({
     position: 'fixed',
     top: 0,
@@ -110,6 +111,7 @@ const menu = theme => ({
     },
     '& a:link, a:visited': {
         color: theme.palette.text.secondary,
+        transition: 'border .5s linear',
     // borderBottom: '1.5px solid rgba(255,255,255,0)',
     },
     '& a:hover': {

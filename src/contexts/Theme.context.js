@@ -46,6 +46,7 @@ const getDesignTokens = (mode) =>({
   },
   breakpoints: {
     values: {
+      xmobile: 415, // should consider 320 (iPhone 5)
       mobile: 500,
       tablet: 700,
       laptop: 1000,

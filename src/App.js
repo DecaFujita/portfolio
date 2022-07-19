@@ -51,5 +51,5 @@ export default App;
 const container = theme => ({
   width: '100vw',
   height: '100%',
-  background: theme.palette.background.default
+  background: theme.palette.background.default,
 })

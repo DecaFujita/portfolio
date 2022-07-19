@@ -11,9 +11,17 @@ const SkillItem = props => {
                 <Typography variant='body2' sx={skillTitle}>
                     {props.skill}
                 </Typography>
+                { width < 500
+                ? 
+                <Box sx={{width: '25rem', height: '100%', display: 'flex', alignItems:'center'}} >
+                    <SkillBar percentage={props.percentage} /> 
+                </Box>
+                :
                 <Box sx={{width: width < 1000 ? '15rem' : '20rem', height: '100%', display: 'flex', alignItems:'center'}} >
                     <SkillBar percentage={props.percentage} /> 
                 </Box>
+                }
+                
             </Box>
     )
 }

@@ -50,7 +50,7 @@ const SocialIcoWhatsapp = props => (
 )
 
 const PinIco = props => (
-    <svg style={style} viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg style={{width: 'inherit', height: 'inherit', transform: 'translateX(.3rem)'}} viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M6.74995 0C3.26695 0 0.449951 2.817 0.449951 6.3C0.449951 11.025 6.74995 18 6.74995 18C6.74995 18 13.05 11.025 13.05 6.3C13.05 2.817 10.233 0 6.74995 0ZM6.74995 8.55C5.50795 8.55 4.49995 7.542 4.49995 6.3C4.49995 5.058 5.50795 4.05 6.74995 4.05C7.99195 4.05 8.99995 5.058 8.99995 6.3C8.99995 7.542 7.99195 8.55 6.74995 8.55Z" fill={props.fill}/>
     </svg>
 )

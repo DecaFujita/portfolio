@@ -37,8 +37,8 @@ const Home = props => {
                                     consequat, vel illum dolore eu feugiat nulla facilisis
                                 </Typography>
                                 <Box sx={contentButtons}>
-                                    <Link href='#' variant='body1' sx={link}>Portfolio</Link>
-                                    <Link href='#' variant='body1' sx={link}>Curriculum</Link>
+                                    <Link href='/portolio' variant='body1' sx={link}>Portfolio</Link>
+                                    <Link href='/cv' variant='body1' sx={link}>Curriculum</Link>
                                 </Box>
                             </Box>
                         </Box>
@@ -82,8 +82,10 @@ const link = theme => ({
     fontWeight: '700',
     letterSpacing: '.05rem',
     borderBottom: '.1rem solid transparent',
-    '&:link': {
-        textDecoration: 'none'
+    transition: 'border .5s linear',
+    '&:link, &:visited': {
+        textDecoration: 'none',
+        transition: 'border .5s linear',
     },
     '&:hover': {
         borderBottom: `.1rem solid ${theme.palette.primary.main}`

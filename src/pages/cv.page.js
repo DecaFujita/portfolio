@@ -82,7 +82,7 @@ const CV = props => {
                                 </Typography>
                                 <SocialIcoInsta fill={theme.palette.secondary.main}/>
                             </Link>
-                            <Link sx={personalLink} mt={1} mb={8}>
+                            <Link sx={personalLink} mt={1} mb={5}>
                                 <Typography variant='body1' mr={2}>
                                     /decafujita
                                 </Typography>
@@ -93,20 +93,20 @@ const CV = props => {
                                 <Typography variant='body2' sx={[sessionTitle, skillTitle ]}>
                                     TECHNICAL SKILLS
                                 </Typography>
-                                <Box sx={{width: '20rem'}}>
+                                <Box sx={icons}>
                                     <IconsApps />
                                 </Box>
                             </Box>
                             { skillList.map(item => <SkillItem key={item.id} skill={item.skill} percentage={item.percentage} />)}
                             <br/><br/>
-                            <Divider sx={dividerA}/>
+                            <Divider sx={dividerA} />
                             {/* INTERESTS */}
 
-                            <Box sx={[session, {justifyContent: 'space-between'}]} mt={5}>
+                            <Box sx={[session, {justifyContent: 'space-between'}]} mt={4}>
                                 <Typography variant='body2' sx={[sessionTitle, skillTitle ]}>
                                     INTERESTS
                                 </Typography>
-                                <Box sx={{width: '20rem'}}>
+                                <Box sx={icons}>
                                 <IconsInterests />
                                 </Box>
                             </Box>
@@ -146,7 +146,7 @@ const CV = props => {
                                 </Box>
                                 <Box sx={columnB}>
                                     <Typography variant='body1' sx={sessionSubTitle}>
-                                        Goldsmiths, Univertisty of London
+                                        Goldsmiths,<br/>Univertisty of London
                                     </Typography>  
                                     <Typography variant='body2' mb={2}>
                                         Master of Arts (MA), Brands, Communication <br/>
@@ -155,7 +155,7 @@ const CV = props => {
                                     </Typography>                              
                                     
                                     <Typography variant='body1' sx={sessionSubTitle}>
-                                        Universidade Federal do Rio de Janeiro
+                                        Universidade Federal<br/>do Rio de Janeiro
                                     </Typography>
                                     <Typography variant='body2' mb={5}>
                                         Bachelor’s degree, Design <br/>
@@ -173,7 +173,7 @@ const CV = props => {
                                 </Box>
                                 <Box sx={columnB}>
                                     <Typography variant='body1' sx={sessionSubTitle}>
-                                        CS50’s Web Programming with Python and Java Script
+                                        CS50’s Web Programming<br/>with Python and Java Script
                                     </Typography>  
                                     <Typography variant='body2' mb={2}>
                                         Harvard - edX<br/>
@@ -251,7 +251,15 @@ const personalInfo = theme => ({
 })
 
 const dividerB = theme => ({borderTop: `.2px solid ${theme.palette.primary.main}`})
-const dividerA = theme => ({borderTop: `.2px solid ${theme.palette.secondary.main}`})
+const dividerA = theme => ({
+    borderTop: `.2px solid ${theme.palette.secondary.main}`,
+    [theme.breakpoints.down('tablet')]: {
+        marginTop: 0
+    },
+    // [theme.breakpoints.down('mobile')]: {
+    //     marginTop: 0
+    // }
+})
 
 const sessionTitle = theme => ({
     textTransform: 'uppercase',
@@ -266,6 +274,18 @@ const skillTitle = theme => ({
     width: '30%',
     letterSpacing: '0',
     textAlign: 'left',
+    [theme.breakpoints.down('tablet')]: {
+        width: '70%',
+        marginBottom: '2rem'
+    }
+})
+
+const icons = theme => ({
+    width: '20rem',
+    [theme.breakpoints.down('tablet')]: {
+        width: '90%',
+        justifySelf: 'flex-end'
+    }
 })
 
 const sessionSubTitle = theme =>({
@@ -275,21 +295,30 @@ const sessionSubTitle = theme =>({
 
 const columnA = theme =>({
     width: '25%',
+    [theme.breakpoints.down('tablet')]: { marginBottom: '1.5rem'}
 })
 
 const columnB = theme =>({
     width: '75%',
-    paddingLeft: '3rem'
+    paddingLeft: '3rem',
+    [theme.breakpoints.down('tablet')]: { width: '100%'}
 })
 
 const session = theme =>({
     display: 'flex',
+    [theme.breakpoints.down('tablet')]: {
+        display: 'block',
+        marginBottom: '4rem'
+    }
 })
 
 const aContent = theme => ({
     width: '40rem',
+    textAlign: 'right',
     padding: '5rem',
-    textAlign: 'right'
+    [theme.breakpoints.down('tablet')]: {
+        padding: '5rem 2.5rem',
+    }
 })
 const bContent = theme => ({
     width: '60rem',
@@ -315,10 +344,14 @@ const bSide = theme => ({
 
 const container = theme => ({
     paddingTop: '20rem',
+    width: '100%',
+    height: '100%',
+    display: 'flex',
     [theme.breakpoints.down('laptop')]: {
         paddingTop: '10rem'
     },
-    width: '100%',
-    height: '100%',
-    display: 'flex'
+    [theme.breakpoints.down('mobile')]: {
+        display: 'block',
+        paddingTop: '6rem'
+    }
 })
