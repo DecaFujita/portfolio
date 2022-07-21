@@ -57,7 +57,7 @@ const sandwich = theme => ({
     display: 'flex',
     height: '5.3rem',
     padding: '1.6rem 0',
-    marginLeft: '1rem',
+    marginLeft: '3rem',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -98,7 +98,7 @@ const menu = theme => ({
     transition: 'all .2s linear',
     '& a': { textDecoration: 'none', borderBottom: `1.5px solid transparent`, transition: 'all .2s linear' },
     '& a:link, a:visited': { color: theme.palette.secondary.main, borderBottom: `1.5px solid transparent`, transition: 'all .2s linear' },
-    '& a:hover': { borderBottom: `1.5px solid white` }
+    '& a:hover': { borderBottom: `1.5px solid white`, fontWeight: '700' }
 })
 
 export default Sandwich;

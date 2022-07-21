@@ -1,4 +1,5 @@
 import { useState, createContext, useEffect } from 'react';
+import getDesignTokens from './Theme.context';
 
 const PageContext = createContext();
 
@@ -6,6 +7,11 @@ const PageProvider = props => {
     const [ isOpen, setIsOpen ] = useState(false);
     const [width, setWidth] = useState(window.innerWidth);
     const [height, setHeight] = useState(window.innerHeight);
+
+    //colours:
+    const lightPalette = getDesignTokens('light').palette;
+    const darkPalette = getDesignTokens('dark').palette;
+
 
 
     // Conditional rendering according to screen width
@@ -31,7 +37,7 @@ const PageProvider = props => {
     }, []);
 
     return (
-        <PageContext.Provider value={{isOpen, setIsOpen, width, height}}>
+        <PageContext.Provider value={{isOpen, setIsOpen, width, height, lightPalette, darkPalette}}>
             {props.children}
         </PageContext.Provider>
     )

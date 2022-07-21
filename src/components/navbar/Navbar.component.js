@@ -7,6 +7,7 @@ import { PageContext } from '../../contexts/Page.context';
 import SwitchMode from '../switch/SwitchMode.component';
 import { useTheme } from '@mui/material/styles';
 import { ScrollToTop } from '../../utils';
+import SunnySwt from '../switches/SunnySwt.component';
 
 const Navbar = props => {
     const scrollRef = useRef(false);
@@ -44,7 +45,8 @@ const Navbar = props => {
         </Box>
         
         <Box sx={{ display: 'flex', alignItems: 'center'}}>
-          <SwitchMode handleChange={props.switchMode} />
+          <SunnySwt handleChange={props.switchMode} isDarkMode={props.isDarkMode}/>
+          {/* <SwitchMode handleChange={props.switchMode} /> */}
             { width < 700 // tablet portrait
               ? 
                 <Sandwich handleClick={handleClick} isOpen={isOpen}  />

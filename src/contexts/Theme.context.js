@@ -1,4 +1,4 @@
-import { green } from '@mui/material/colors';
+import { green, yellow } from '@mui/material/colors';
 
 const getDesignTokens = (mode) =>({
   palette: {
@@ -18,10 +18,13 @@ const getDesignTokens = (mode) =>({
       main: '#272727',
       dark: '#191919'
     },
-    greys: {
-      one: '#474747',
-      two: '#272727',
-      three: '#191919'
+    grey: {
+      six: '#F2F2F@',
+      five: '#E0E0E0',
+      four: '#BDBDBD',
+      three:'#828282',
+      two: '#4F4F4F',
+      one:'#333333'
     },
     background: {
       default: '#fafafa',

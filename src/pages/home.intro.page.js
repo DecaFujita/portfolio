@@ -78,7 +78,11 @@ const chevron = theme => ({
     cursor: 'pointer',
     width: '7rem',
     transform: 'translateY(12rem)',
-    [theme.breakpoints.down('mobile')]: { transform: 'translateY(4rem)' }
+    transition: 'all .3s easeOutElastic',
+    [theme.breakpoints.down('mobile')]: { transform: 'translateY(4rem)' },
+    '&:hover': {
+        transform: 'translateY(12.5rem)',
+    }
 })
 
 const tail = theme => ({

@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import anime from 'animejs/lib/anime.es.js';
 import { Box } from '@mui/material';
 
-const DarkModeSwt = props => {
+const DarkModeSwt2 = props => {
     const [ isActive, setIsActive ] = useState(false);
     let activeRef = useRef(false);
 
@@ -140,4 +140,4 @@ const right = theme => ({
     background: 'white'
 })
 
-export default DarkModeSwt;
+export default DarkModeSwt2;
