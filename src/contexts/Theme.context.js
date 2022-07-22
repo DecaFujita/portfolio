@@ -4,9 +4,9 @@ const getDesignTokens = (mode) =>({
   palette: {
     mode,
     primary: {
-      light: green[500],
-      main: green[600],
-      dark: green[700],
+      light: green[600],
+      main: yellow[700],
+      dark: yellow[800],
       // ...(mode === 'dark' && {
       //   light: amber[200],
       //   main: amber[300],

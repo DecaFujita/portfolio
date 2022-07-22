@@ -3,8 +3,8 @@ import KlaubenMain from '../img/KlaubenMain.png';
 import RetailOneMain from '../img/RetailOneMain.jpg';
 import CruzadaLogo from '../img/CruzadaLogo.png';
 import CruzadaLogoNeg from '../img/CruzadaLogoNeg.png';
-import MobdiqMain from '../img/MobdiqMain.jpg';
-
+import MobdiqMain from '../img/MobdiqMain.png';
+import MobdiqMainNeg from '../img/MobdiqMainNeg.png';
 
 export const portfolioContentList = [
     {
@@ -24,7 +24,7 @@ export const portfolioContentList = [
         description: "User Interface for mobile and desktop website. Developed and hosted on Wordpress.",
         tags: ['UI', 'WordPress'],
         mainPic: MobdiqMain,
-        mainPicNeg: MobdiqMain,
+        mainPicNeg: MobdiqMainNeg,
         color: '#00A1E0'
     },
     {

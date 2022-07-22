@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useContext} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Sandwich from './Sandwich.component';
 import { PageContext } from '../../contexts/Page.context';
-import SwitchMode from '../switch/SwitchMode.component';
+import SwitchMode from '../switches/SwitchMode.component';
 import { useTheme } from '@mui/material/styles';
 import { ScrollToTop } from '../../utils';
 import SunnySwt from '../switches/SunnySwt.component';
@@ -40,8 +40,8 @@ const Navbar = props => {
    
     return (
       <Box sx={navbar}>
-        <Box sx={navlogo}  onClick={() => goTo('/')}>
-          {props.isDarkMode ? <NavLogoNeg /> : <NavLogo />}
+        <Box sx={navlogo} onClick={() => goTo('/')}>
+          {props.isDarkMode ? <NavLogoNeg colour={activeColor}/> : <NavLogo color={activeColor}/>}
         </Box>
         
         <Box sx={{ display: 'flex', alignItems: 'center'}}>
